@@ -46,19 +46,19 @@
                     <div id="collapse1" class="panel-collapse collapse">
                       <ul class="list-group">
                         <li class="list-group-item teste">
-                          <a href="<?php echo BASEURL; ?>cadastro/produto/index.php">Grupo</a>
+                          <a href="<?php echo BASEURL; ?>cadastro/grupo/index.php">Grupo Produto</a>
                         </li>
                         <li class="list-group-item teste">
-                          <a href="<?php echo BASEURL; ?>instagram/index.php">Produto</a>
+                          <a href="<?php echo BASEURL; ?>cadastro/produto/index.php">Produto</a>
                         </li>
                         <li class="list-group-item teste">
-                          <a href="<?php echo BASEURL; ?>instagram/index.php">Cliente</a>
+                          <a href="<?php echo BASEURL; ?>cadastro/cliente/index.php">Cliente</a>
                         </li>
                         <li class="list-group-item teste">
-                          <a href="<?php echo BASEURL; ?>instagram/index.php">Fornecedor</a>
+                          <a href="<?php echo BASEURL; ?>cadastro/fornecedor/index.php">Fornecedor</a>
                         </li>
                         <li class="list-group-item teste">
-                          <a href="<?php echo BASEURL; ?>instagram/index.php">Transportadora</a>
+                          <a href="<?php echo BASEURL; ?>cadastro/transportadora/index.php">Transportadora</a>
                         </li>
                       </ul>
                       <div class="panel-footer">Footer</div>
@@ -66,20 +66,15 @@
                   </div>
                 </div>
                 <li>
-                    <a href="#">Overview</a>
+                    <a href="#">Pedidos</a>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <a href="#">O.C.</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="#">Relatorios</a>
                 </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
+
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -88,7 +83,7 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <a href="#menu-toggle" class="btn btn-secondary fa fa-3x fa-bar-chart" id="menu-toggle"></a>
-                <h1 class="name-menu">Sistema UPMarkVision</h1>
+                <h1 class="name-menu">Next <strong>Valvulas</strong></h1>
             </div>
         </div>
         <!-- /#page-content-wrapper -->

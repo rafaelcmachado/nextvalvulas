@@ -8,11 +8,11 @@
 <header>
 	<div class="row">
 		<div class="col-sm-6">
-			<h2>Clientes</h2>
+			<h2>Produto</h2>
 		</div>
 		<div class="col-sm-6 text-right h2">
-	    	<a class="btn btn-primary" href="add.php"><i class="fa fa-plus"></i> Novo Cliente</a>
-	    	<a class="btn btn-default" href="index.php"><i class="fa fa-refresh"></i> Atualizar</a>
+	    	<a class="btn btn-primary" href="add.php"><i class="fa fa-plus"></i> Novo Produto</a>
+	    	<a class="btn btn-primary" href="index.php"><i class="fa fa-refresh"></i> Atualizar</a>
 	    </div>
 	</div>
 </header>
@@ -32,9 +32,8 @@
 	<tr>
 		<th>ID</th>
 		<th width="30%">Nome</th>
-		<th>CPF/CNPJ</th>
-    <th>Celular</th>
-		<th>Telefone</th>
+		<th>Preço</th>
+    <th>Grupo</th>
     <th>Data Cadastro</th>
     <th>Ativo</th>
 		<th>Opções</th>
@@ -46,11 +45,10 @@
 	<tr>
 		<td><?php echo $customer['id']; ?></td>
 		<td><?php echo $customer['nome']; ?></td>
-		<td><?php echo $customer['CNPJ_CPF']; ?></td>
-    <td><?php echo $customer['celulcar']; ?></td>
-		<td><?php echo $customer['telefone']; ?></td>
+		<td><?php echo $customer['preco']; ?></td>
+    <td><?php echo $customer['grupo']; ?></td>
 		<td><?php echo $customer['dataCadastro']; ?></td>
-    <td><?php echo $customer['ativo']; ?></td>
+    <td><?php echo $customer['inativo']; ?></td>
 		<td class="actions text-right">
 			<a href="view.php?id=<?php echo $customer['id']; ?>" class="btn btn-sm btn-success"><i class="fa fa-eye"></i> Visualizar</a>
 			<a href="edit.php?id=<?php echo $customer['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>

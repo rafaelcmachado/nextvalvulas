@@ -4,7 +4,7 @@
   edit();
 ?>
 
-<?php include(HEADER_TEMPLATE); ?>
+<?php include(ADMDASH_TEMPLATE); ?>
 
 <h2>Atualizar Cliente</h2>
 
@@ -89,4 +89,4 @@
   </div>
 </form>
 
-<?php include(FOOTER_TEMPLATE); ?>
+<?php include(ADMDASHF_TEMPLATE); ?>

@@ -5,7 +5,7 @@ require_once(DBAPI);
 
 $customers = null;
 $customer  = null;
-$cidade    = null;
+$grupo    = null;
 $ativo	   = null;
 
 /**
@@ -13,12 +13,12 @@ $ativo	   = null;
  */
 function index() {
 	global $customers;
-	$customers = find_all('cliente');
+	$customers = findProdutoIndex();
 }
 
-function cidadeFind() {
-	global $cidade;
-	$cidade = findCidade();
+function grupoFind() {
+	global $grupo;
+	$grupo = findGrupo();
 }
 
 /**
@@ -27,6 +27,16 @@ function cidadeFind() {
 function add() {
 
   if (!empty($_POST['customer'])) {
+		if(isset($_FILES['arquivo']))
+   {
+      date_default_timezone_set("Brazil/East"); //Definindo timezone padrão
+
+      $ext = strtolower(substr($_FILES['arquivo']['name'],-4)); //Pegando extensão do arquivo
+      $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
+      $dir = 'uploads/'; //Diretório para uploads
+
+      move_uploaded_file($_FILES['arquivo']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+   }
 
     $today =
       date_create('now', new DateTimeZone('America/Sao_Paulo'));
@@ -34,7 +44,7 @@ function add() {
     $customer = $_POST['customer'];
     $customer['dataCadastro'] = $today->format("Y-m-d H:i:s");
 
-    save('cliente', $customer);
+    save('produto', $customer);
     header('location: index.php');
   }
 }

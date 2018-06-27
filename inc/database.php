@@ -63,9 +63,38 @@ function find( $table = null, $id = null ) {
 	return $found;
 }
 
-function findCidade() {
+function findProdutoIndex() {
+
+	$database = open_database();
+	$found = null;
+
+	try {
+		$database = open_database();
+		$sql = "SELECT
+													p.id,
+													p.nome,
+						concat(\"R$\",p.preco) as preco,
+													g.nome as grupo,
+							DATE_FORMAT(p.dataCadastro, \"%d/%m/%Y\") as dataCadastro,
+											 IF(p.inativo = 0, \"Sim\", \"Não\") as inativo
+						from      produto p
+						left join grupo_produto g on g.id = p.idGrupo";
+		$resultado = mysqli_query($database, $sql);
+		if (mysqli_num_rows($resultado) > 0) {
+				return $resultado;
+		} else {
+				return false;
+		}
+
+	} catch (Exception $e) {
+	  $_SESSION['message'] = $e->GetMessage();
+	  $_SESSION['type'] = 'danger';
+  }
+}
+
+function findGrupo() {
 				$database = open_database();
-        $sql = "SELECT * FROM cidade ORDER BY nome";
+        $sql = "SELECT * FROM grupo_produto ORDER BY nome";
         $resultado = mysqli_query($database, $sql);
         if (mysqli_num_rows($resultado) > 0) {
             return $resultado;
@@ -83,6 +112,8 @@ function findCliente() {
         } else {
             return false;
         }
+				close_database($database);
+
 			}
 
 
