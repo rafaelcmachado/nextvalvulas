@@ -30,3 +30,6 @@ define('FOOTER_TEMPLATE', ABSPATH . 'inc/footer.php');
 define('LOGIN_TEMPLATE', ABSPATH . 'inc/login.php');
 define('ADM_TEMPLATE', ABSPATH . 'inc/adm.php');
 define('USER_TEMPLATE', ABSPATH . 'inc/user.php');
+define('ADMDASH_TEMPLATE', ABSPATH . 'inc/admdash.php');
+define('ADMDASHF_TEMPLATE', ABSPATH . 'inc/admdashfooter.php');
+define('USERDASH_TEMPLATE', ABSPATH . 'inc/userdash.php');
