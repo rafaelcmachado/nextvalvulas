@@ -4,6 +4,7 @@
 ?>
 
 <?php include(ADMDASH_TEMPLATE); ?>
+<?php include(PAG_TEMPLATE); ?>
 
 <header>
 	<div class="row">
@@ -40,8 +41,9 @@
 	</tr>
 </thead>
 <tbody>
-<?php if ($customers) : ?>
-<?php foreach ($customers as $customer) : ?>
+<?php while($customer = mysqli_fetch_assoc($resultado_cursos)) {
+  $verifica = 1
+  ?>
 	<tr>
 		<td><?php echo $customer['id']; ?></td>
 		<td><?php echo $customer['nome']; ?></td>
@@ -57,14 +59,15 @@
 			</a>
 		</td>
 	</tr>
-<?php endforeach; ?>
-<?php else : ?>
-	<tr>
+<?php } ?>
+<?php if($verifica != 1){ ?>
+  <tr>
 		<td colspan="6">Nenhum registro encontrado.</td>
 	</tr>
-<?php endif; ?>
+<?php } ?>
 </tbody>
 </table>
 
+<?php include(PAGD_TEMPLATE); ?>
 <?php include('modal.php'); ?>
 <?php include(ADMDASHF_TEMPLATE); ?>

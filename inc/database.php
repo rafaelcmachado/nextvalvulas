@@ -24,6 +24,9 @@ function close_database($conn) {
 /**
  *  Pesquisa um Registro pelo ID em uma Tabela
  */
+
+
+
 function find( $table = null, $id = null ) {
 
 	$database = open_database();
@@ -102,6 +105,18 @@ function findGrupo() {
             return false;
         }
 			}
+
+function findUltimoProd() {
+							$database = open_database();
+			        $sql = "SELECT id FROM produto ORDER BY id desc limit 1";
+			        $resultado = mysqli_query($database, $sql);
+			        if (mysqli_num_rows($resultado) > 0) {
+									$valor =	mysqli_fetch_array($resultado, 1);
+			            return $valor['id'];
+			        } else {
+			            return false;
+			        }
+						}
 
 function findCliente() {
 				$database = open_database();

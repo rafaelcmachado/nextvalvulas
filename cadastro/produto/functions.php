@@ -5,6 +5,7 @@ require_once(DBAPI);
 
 $customers = null;
 $customer  = null;
+$imagem  = null;
 $grupo    = null;
 $ativo	   = null;
 
@@ -27,16 +28,6 @@ function grupoFind() {
 function add() {
 
   if (!empty($_POST['customer'])) {
-		if(isset($_FILES['arquivo']))
-   {
-      date_default_timezone_set("Brazil/East"); //Definindo timezone padrão
-
-      $ext = strtolower(substr($_FILES['arquivo']['name'],-4)); //Pegando extensão do arquivo
-      $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
-      $dir = 'uploads/'; //Diretório para uploads
-
-      move_uploaded_file($_FILES['arquivo']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
-   }
 
     $today =
       date_create('now', new DateTimeZone('America/Sao_Paulo'));
@@ -45,6 +36,11 @@ function add() {
     $customer['dataCadastro'] = $today->format("Y-m-d H:i:s");
 
     save('produto', $customer);
+		$imagem['caminho'] = saveImage();
+		$imagem['seq'] = 1;
+		$imagem['idProduto'] = findUltimoProd();
+
+		save('imagem_produto', $imagem);
     header('location: index.php');
   }
 }
@@ -66,18 +62,51 @@ function edit() {
     if (isset($_POST['customer'])) {
 
       $customer = $_POST['customer'];
-			$customer['ativo'] = $ativo;
-
-      update('cliente', $id, $customer);
+			$customer['inativo'] = $ativo;
+      update('produto', $id, $customer);
       header('location: index.php');
     } else {
 
       global $customer;
-      $customer = find('cliente', $id);
+      $customer = find('produto', $id);
     }
   } else {
     header('location: index.php');
   }
+}
+
+function saveImage() {
+
+// verifica se foi enviado um arquivo
+if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] == 0 ) {
+
+    $arquivo_tmp = $_FILES[ 'arquivo' ][ 'tmp_name' ];
+    $nome = $_FILES[ 'arquivo' ][ 'name' ];
+
+    // Pega a extensão
+    $extensao = pathinfo ( $nome, PATHINFO_EXTENSION );
+
+    // Converte a extensão para minúsculo
+    $extensao = strtolower ( $extensao );
+
+    // Somente imagens, .jpg;.jpeg;.gif;.png
+    // Aqui eu enfileiro as extensões permitidas e separo por ';'
+    // Isso serve apenas para eu poder pesquisar dentro desta String
+    if ( strstr ( '.jpg;.jpeg;.gif;.png', $extensao ) ) {
+        // Cria um nome único para esta imagem
+        // Evita que duplique as imagens no servidor.
+        // Evita nomes com acentos, espaços e caracteres não alfanuméricos
+        $novoNome = uniqid ( time () ) . '.' . $extensao;
+
+        // Concatena a pasta com o nome
+				$destino = '../../img/produto/ ' . $novoNome;
+
+        // tenta mover o arquivo para o destino
+        if ( @move_uploaded_file ( $arquivo_tmp, $destino ) ) {
+            	return $novoNome;
+        }
+    }
+	}
 }
 
 /**
@@ -86,7 +115,7 @@ function edit() {
 function delete($id = null) {
 
   global $customer;
-  $customer = remove('cliente', $id);
+  $customer = remove('produto', $id);
 
   header('location: index.php');
 }

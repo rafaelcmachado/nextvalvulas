@@ -39,10 +39,10 @@
             for ($i = 0; $i < mysqli_num_rows($grupo); $i++) {
                 $linha = mysqli_fetch_array($grupo);
                 if($linha['id'] == $customer['idGrupo']){
-                  echo "<option name='".$linha['id']."' selected='selected'>".$linha['nome']."</option>";
+                  echo "<option value='".$linha['id']."' selected='selected'>".$linha['nome']."</option>";
                 }
                 else{
-                  echo "<option name='".$linha['id']."'>".$linha['nome']."</option>";
+                  echo "<option value='".$linha['id']."'>".$linha['id'] . $linha['nome']."</option>";
                 }
             }
             echo "</select>";
