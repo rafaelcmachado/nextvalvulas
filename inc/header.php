@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Flattern - Flat and trendy bootstrap site template</title>
+  <title>Next Valvulas - ECommerce</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="" />
   <meta name="author" content="" />
@@ -76,8 +76,7 @@
         <div class="row">
           <div class="span4">
             <div class="logo">
-              <a href="index.html"><img src="img/logo.png" alt="" class="logo" /></a>
-              <h1>Flat and trendy bootstrap template</h1>
+              <h1>LOGO</h1>
             </div>
           </div>
           <div class="span8">
