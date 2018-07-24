@@ -57,7 +57,7 @@
 				<div class="span6">
 					<div class="copyright">
 						<p>
-							<span>&copy; Flattern - All right reserved.</span>
+							<span>&copy; UPMarkVision - All right reserved.</span>
 						</p>
 						<div class="credits">
 							<!--
@@ -66,7 +66,7 @@
 								Licensing information: https://bootstrapmade.com/license/
 								Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Flattern
 							-->
-							Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+							Designed by <a href="https://bootstrapmade.com/">Rafael C. Machado</a>
 						</div>
 					</div>
 				</div>

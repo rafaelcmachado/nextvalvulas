@@ -9,7 +9,7 @@
         <div class="container">
           <div class= 'boas-vindas' >
             <div>
-              <h2 class='text-princ'>Teste <?php echo $_SESSION['login'] ?> <strong>Carai</strong></h2>
+              <h2 class='text-princ'>Next <strong>Valvulas</strong></h2>
               <p>
                 O seu e-commerce de valvulas de confinaça. <br>Temos otimos fornecedores e grande responsabilidade com você cliente!
               </p>

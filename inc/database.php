@@ -95,6 +95,38 @@ function findProdutoIndex() {
   }
 }
 
+function findProduto( $id = null) {
+
+	$database = open_database();
+	$found = null;
+
+	try {
+		$database = open_database();
+		$sql = "SELECT
+													p.id,
+													p.nome,
+						concat(\"R$ \",CONVERT(p.preco, DECIMAL(10,2))) as preco,
+													g.nome as grupo,
+							DATE_FORMAT(p.dataCadastro, \"%d/%m/%Y\") as dataCadastro,
+											 IF(p.inativo = 0, \"Sim\", \"Não\") as inativo,
+											    p.descricao
+						from      produto p
+						left join grupo_produto g on g.id = p.idGrupo
+						where p.id = 2" ;
+						$result = $database->query($sql);
+
+				    if ($result->num_rows > 0) {
+				      $found = $result->fetch_assoc();
+							return $found;
+				    }
+
+	} catch (Exception $e) {
+	  $_SESSION['message'] = $e->GetMessage();
+	  $_SESSION['type'] = 'danger';
+  }
+
+}
+
 function findGrupo() {
 				$database = open_database();
         $sql = "SELECT * FROM grupo_produto ORDER BY nome";
