@@ -13,13 +13,9 @@ $ativo	   = null;
  */
 function index() {
 	global $customers;
-	$customers = find_all('cliente');
+	$customers = find_all('grupo_produto');
 }
 
-function cidadeFind() {
-	global $cidade;
-	$cidade = findCidade();
-}
 
 /**
  *  Cadastro de Clientes
@@ -28,13 +24,9 @@ function add() {
 
   if (!empty($_POST['customer'])) {
 
-    $today =
-      date_create('now', new DateTimeZone('America/Sao_Paulo'));
-
     $customer = $_POST['customer'];
-    $customer['dataCadastro'] = $today->format("Y-m-d H:i:s");
 
-    save('cliente', $customer);
+    save('grupo_produto', $customer);
     header('location: index.php');
   }
 }
@@ -49,21 +41,17 @@ function edit() {
   if (isset($_GET['id'])) {
 
     $id = $_GET['id'];
-		 if (isset($_POST['ativo'])) {
-			 $ativo = ($_POST['ativo'] == '1') ? 1 : 0;
-		}
 
     if (isset($_POST['customer'])) {
 
       $customer = $_POST['customer'];
-			$customer['ativo'] = $ativo;
 
-      update('cliente', $id, $customer);
+      update('grupo_produto', $id, $customer);
       header('location: index.php');
     } else {
 
       global $customer;
-      $customer = find('cliente', $id);
+      $customer = find('grupo_produto', $id);
     }
   } else {
     header('location: index.php');
@@ -76,7 +64,7 @@ function edit() {
 function delete($id = null) {
 
   global $customer;
-  $customer = remove('cliente', $id);
+  $customer = remove('grupo_produto', $id);
 
   header('location: index.php');
 }
