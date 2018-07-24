@@ -4,7 +4,7 @@
 ?>
 
 <?php include(ADMDASH_TEMPLATE); ?>
-<?php include(PAG_TEMPLATE); ?>
+<?php include('paginacaoup.php'); ?>
 
 <header>
 	<div class="row">
@@ -68,6 +68,6 @@
 </tbody>
 </table>
 
-<?php include(PAGD_TEMPLATE); ?>
+<?php include('paginacaodown.php'); ?>
 <?php include('modal.php'); ?>
 <?php include(ADMDASHF_TEMPLATE); ?>

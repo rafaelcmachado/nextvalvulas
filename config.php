@@ -33,5 +33,3 @@ define('USER_TEMPLATE', ABSPATH . 'inc/user.php');
 define('ADMDASH_TEMPLATE', ABSPATH . 'inc/admdash.php');
 define('ADMDASHF_TEMPLATE', ABSPATH . 'inc/admdashfooter.php');
 define('USERDASH_TEMPLATE', ABSPATH . 'inc/userdash.php');
-define('PAG_TEMPLATE', ABSPATH . 'inc/paginacaoup.php');
-define('PAGD_TEMPLATE', ABSPATH . 'inc/paginacaodown.php');

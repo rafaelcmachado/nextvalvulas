@@ -1,4 +1,4 @@
-<?php include_once("database.php");
+<?php
 //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina
 $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
