@@ -4,42 +4,21 @@
  ?>
 <?php include(ADMDASH_TEMPLATE); ?>
 
-<h2>Produto <?php echo $customer['id']; ?></h2>
+<h2>Grupo de Produto <?php echo $customer['id']; ?></h2>
 <hr>
 
 <?php if (!empty($_SESSION['message'])) : ?>
 	<div class="alert alert-<?php echo $_SESSION['type']; ?>"><?php echo $_SESSION['message']; ?></div>
 <?php endif; ?>
 
-
-<dl class="dl-horizontal">
-	<dd><img src="../../img/produto/%20<?php echo $customer['caminho']; ?>" alt="Error Image"></dd>
-
-</dl>
-
 <dl class="dl-horizontal">
 	<dt>Nome:</dt>
 	<dd><?php echo $customer['nome']; ?></dd>
 
-	<dt>Preço:</dt>
-	<dd><?php echo $customer['preco']; ?></dd>
-
-	<dt>Grupo:</dt>
-	<dd><?php echo $customer['grupo']; ?></dd>
-</dl>
-
-<dl class="dl-horizontal">
-
-  <dt>Data de Cadastro:</dt>
-	<dd><?php echo $customer['dataCadastro']; ?></dd>
-
-
 	<dt>Descrição:</dt>
 	<dd><?php echo $customer['descricao']; ?></dd>
-
-
+  </br>
 </dl>
-
 
 <div id="actions" class="row">
 	<div class="col-md-12">

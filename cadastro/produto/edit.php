@@ -6,9 +6,9 @@
 
 <?php include(ADMDASH_TEMPLATE); ?>
 
-<h2>Atualizar Cliente</h2>
+<h2>Atualizar Produto</h2>
 
-<form action="edit.php?id=<?php echo $customer['id']; ?>" method="post">
+<form action="edit.php?id=<?php echo $customer['id']; ?>" method="post" enctype="multipart/form-data">
   <!-- area de campos do form -->
   <hr />
   <div class="row">

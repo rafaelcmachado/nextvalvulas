@@ -2723,6 +2723,24 @@ article img.pull-right, article .align-right {
   color:antiquewhite;
 }
 
+.img-prin{
+  border: black;
+  border-style: solid;
+  width: 25%;
+  margin-left: 10%;
+  margin-bottom: 10%;
+}
+
+.title-prod{
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+.text-prod{
+  text-align: center;
+}
+
 .text-princ{
   color:antiquewhite;
 }
@@ -2731,5 +2749,6 @@ article img.pull-right, article .align-right {
   width: 400px;
   height: 400px;
 }
+
 
 /* Theme Styler :: End */

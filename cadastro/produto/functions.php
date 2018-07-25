@@ -10,7 +10,7 @@ $grupo    = null;
 $ativo	   = null;
 
 /**
- *  Listagem de Clientes
+ *  Listagem de Produtos
  */
 function index() {
 	global $customers;
@@ -23,23 +23,28 @@ function grupoFind() {
 }
 
 /**
- *  Cadastro de Clientes
+ *  Cadastro de Produtos
  */
 function add() {
 
   if (!empty($_POST['customer'])) {
 
-    $today =
-      date_create('now', new DateTimeZone('America/Sao_Paulo'));
+    $today = date_create('now', new DateTimeZone('America/Sao_Paulo'));
+
+		if (isset($_POST['inativo'])) {
+			$ativo = ($_POST['inativo'] == '1') ? 1 : 0;
+		}
 
     $customer = $_POST['customer'];
     $customer['dataCadastro'] = $today->format("Y-m-d H:i:s");
 
     save('produto', $customer);
 		$imagem['caminho'] = saveImage();
-		$imagem['seq'] = 1;
-		$imagem['idProduto'] = findUltimoProd();
+		if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] == 0 ) {
 
+			$imagem['seq'] = 1;
+			$imagem['idProduto'] = findUltimoProd();
+		}
 		save('imagem_produto', $imagem);
     header('location: index.php');
   }
@@ -50,20 +55,29 @@ function add() {
  */
 function edit() {
 
-
-
   if (isset($_GET['id'])) {
 
     $id = $_GET['id'];
-		 if (isset($_POST['ativo'])) {
-			 $ativo = ($_POST['ativo'] == '1') ? 1 : 0;
+		 if (isset($_POST['inativo'])) {
+			 $ativo = ($_POST['inativo'] == '1') ? 1 : 0;
 		}
 
     if (isset($_POST['customer'])) {
 
       $customer = $_POST['customer'];
 			$customer['inativo'] = $ativo;
+
       update('produto', $id, $customer);
+
+			$imagem['caminho'] = saveImage();
+			if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] == 0 ) {
+
+				$imagem['seq'] = 1;
+				$imagem['idProduto'] = $_GET['id'];
+
+				update('imagem_produto', $imagem);
+			}
+
       header('location: index.php');
     } else {
 
@@ -110,7 +124,7 @@ if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] 
 }
 
 /**
- *  Exclusão de um Cliente
+ *  Exclusão de um Produto
  */
 function delete($id = null) {
 

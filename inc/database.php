@@ -109,10 +109,12 @@ function findProduto( $id = null) {
 													g.nome as grupo,
 							DATE_FORMAT(p.dataCadastro, \"%d/%m/%Y\") as dataCadastro,
 											 IF(p.inativo = 0, \"Sim\", \"Não\") as inativo,
-											    p.descricao
+											    p.descricao,
+													i.caminho
 						from      produto p
 						left join grupo_produto g on g.id = p.idGrupo
-						where p.id = 2" ;
+						left join imagem_produto i on i.idProduto = p.id and i.seq = 1
+						where p.id = $id" ;
 						$result = $database->query($sql);
 
 				    if ($result->num_rows > 0) {

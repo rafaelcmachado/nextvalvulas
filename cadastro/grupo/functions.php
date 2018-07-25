@@ -68,3 +68,8 @@ function delete($id = null) {
 
   header('location: index.php');
 }
+
+function view($id = null) {
+	global $customer;
+	$customer = findProduto($id);
+}

@@ -147,6 +147,16 @@ body {
 .titledash{
   color: white;
 }
+.homedash{
+  color: #ecf0f1;
+  padding-right: 49px;
+  font-size: 39px;
+}
+.homedash:hover{
+  color: #ecf0ff;
+  padding-right: 49px;
+  font-size: 39px;
+}
 .corpo{
   margin: 15px;
 }

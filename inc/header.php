@@ -11,20 +11,23 @@
   <!-- css -->
   <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-  <link href="../css/bootstrap.css" rel="stylesheet" />
-  <link href="../css/bootstrap-responsive.css" rel="stylesheet" />
-  <link href="../css/fancybox/jquery.fancybox.css" rel="stylesheet">
-  <link href="../css/jcarousel.css" rel="stylesheet" />
-  <link href="../css/flexslider.css" rel="stylesheet" />
-  <link href="../css/style.css" rel="stylesheet" />
+  <link href="/css/bootstrap.css" rel="stylesheet" />
+  <link href="/css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+  <link href="/css/jcarousel.css" rel="stylesheet" />
+  <link href="/css/flexslider.css" rel="stylesheet" />
+
+  
+
+  <link href="/css/style.css" rel="stylesheet" />
   <!-- Theme skin -->
-  <link href="skins/default.css" rel="stylesheet" />
+  <link href="<?php echo BASEURL; ?>skins/default.css" rel="stylesheet" />
   <!-- Fav and touch icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../ico/apple-touch-icon-144-precomposed.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../ico/apple-touch-icon-114-precomposed.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../ico/apple-touch-icon-72-precomposed.png" />
-  <link rel="apple-touch-icon-precomposed" href="../ico/apple-touch-icon-57-precomposed.png" />
-  <link rel="shortcut icon" href="../ico/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/ico/apple-touch-icon-144-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/ico/apple-touch-icon-114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/ico/apple-touch-icon-72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="/ico/apple-touch-icon-57-precomposed.png" />
+  <link rel="shortcut icon" href="/ico/favicon.png" />
 
   <!-- =======================================================
     Theme Name: Flattern
@@ -85,7 +88,7 @@
                 <nav>
                   <ul class="nav topnav">
                     <li class="dropdown active">
-                      <a href="index.php">Inicio <i class="fas fa-home"></i></a>
+                      <a href="<?php echo BASEURL; ?>index.php">Inicio <i class="fas fa-home"></i></a>
                     </li>
                     <li class="dropdown active">
                       <a href="about.php">Sobre nós <i class="fas fa-bookmark"></i></a>
@@ -105,7 +108,7 @@
                             <li><a href="index-alt3.html">Vapor</a></li>
                           </ul>
                         </li>
-                        <li><a href="typography.html">Filtro Y</a></li>
+                        <li><a href="views\produto.php">Filtro Y</a></li>
                         <li><a href="table.html">Flanges</a></li>
                         <li><a href="components.html">Reservatório Ar Comprimido</a></li>
                         <li><a href="animations.html">Pneumatica</a></li>

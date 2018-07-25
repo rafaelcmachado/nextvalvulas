@@ -84,6 +84,7 @@
             <div class="container-fluid">
                 <a href="#menu-toggle" class="btn btn-secondary fa fa-3x fa-bar-chart" id="menu-toggle"></a>
                 <h1 class="name-menu">Next <strong>Valvulas</strong></h1>
+                <a class="float-right homedash" href="<?php echo BASEURL; ?>">Sair</a>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
