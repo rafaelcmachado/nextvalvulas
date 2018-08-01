@@ -17,6 +17,11 @@ function index() {
 	$customers = findProdutoIndex();
 }
 
+function indexBitola($id = null) {
+	global $bitolas;
+	$bitolas = findBitolaIndex($id);
+}
+
 function grupoFind() {
 	global $grupo;
 	$grupo = findGrupo();

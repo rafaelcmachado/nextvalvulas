@@ -20,12 +20,9 @@ function close_database($conn) {
 	}
 }
 
-
 /**
  *  Pesquisa um Registro pelo ID em uma Tabela
  */
-
-
 
 function find( $table = null, $id = null ) {
 
@@ -82,6 +79,27 @@ function findProdutoIndex() {
 											 IF(p.inativo = 0, \"Sim\", \"Não\") as inativo
 						from      produto p
 						left join grupo_produto g on g.id = p.idGrupo";
+		$resultado = mysqli_query($database, $sql);
+		if (mysqli_num_rows($resultado) > 0) {
+				return $resultado;
+		} else {
+				return false;
+		}
+
+	} catch (Exception $e) {
+	  $_SESSION['message'] = $e->GetMessage();
+	  $_SESSION['type'] = 'danger';
+  }
+}
+
+function findBitolaIndex($id = null) {
+
+	$database = open_database();
+	$found = null;
+
+	try {
+		$database = open_database();
+		$sql = "SELECT * from bitola where idProduto = " . $id;
 		$resultado = mysqli_query($database, $sql);
 		if (mysqli_num_rows($resultado) > 0) {
 				return $resultado;

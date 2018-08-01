@@ -2723,15 +2723,44 @@ article img.pull-right, article .align-right {
   color:antiquewhite;
 }
 
+.linha-produto{
+  margin: 0;
+  margin-left: 5%;
+  margin-bottom: 1%;
+  margin-top: 0%;
+  border: 0;
+  border-top: 1px solid #e2b1b1b8;
+  border-bottom: 1px solid #ffffff;
+  width: 85%;
+  text-align: right;
+
+}
+
 .img-prin{
-  border: black;
-  border-style: solid;
-  width: 25%;
+  border: #f03c027d;
+  width: 20%;
   margin-left: 10%;
   margin-bottom: 10%;
 }
 
+.prodPrin{
+  margin-top: 15px;
+}
+
+.first-img{
+  border-right-style: solid;
+}
+
+.sec-img{
+
+}
+
+.tird-img{
+    border-left-style: solid;
+}
+
 .title-prod{
+  color: #f03c02;
   text-align: center;
   margin: 20px 0;
   padding: 10px;
@@ -2749,6 +2778,5 @@ article img.pull-right, article .align-right {
   width: 400px;
   height: 400px;
 }
-
 
 /* Theme Styler :: End */

@@ -3,45 +3,21 @@
 		<div class="row">
 			<div class="span3">
 				<div class="widget">
-					<h5 class="widgetheading">Browse pages</h5>
+					<h5 class="widgetheading">Guias Rapidas</h5>
 					<ul class="link-list">
-						<li><a href="#">About our company</a></li>
-						<li><a href="#">Our services</a></li>
-						<li><a href="#">Meet our team</a></li>
-						<li><a href="#">Explore our portfolio</a></li>
-						<li><a href="#">Get in touch with us</a></li>
+						<li><a href="#">Inicio</a></li>
+						<li><a href="#">Sobre nós</a></li>
+						<li><a href="#">Contato</a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="span3">
 				<div class="widget">
-					<h5 class="widgetheading">Important stuff</h5>
-					<ul class="link-list">
-						<li><a href="#">Press release</a></li>
-						<li><a href="#">Terms and conditions</a></li>
-						<li><a href="#">Privacy policy</a></li>
-						<li><a href="#">Career center</a></li>
-						<li><a href="#">Flattern forum</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="span3">
-				<div class="widget">
-					<h5 class="widgetheading">Flickr photostream</h5>
-					<div class="flickr_badge">
-						<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
-					</div>
-					<div class="clear">
-					</div>
-				</div>
-			</div>
-			<div class="span3">
-				<div class="widget">
-					<h5 class="widgetheading">Get in touch with us</h5>
+					<h5 class="widgetheading">Nossa localização</h5>
 					<address>
-						<strong>Flattern studio, Pte Ltd</strong><br>
-						 Springville center X264, Park Ave S.01<br>
-						 Semarang 16425 Indonesia
+						<strong>Next Valvulas LTDA</strong><br>
+						 Rua Belorizonte, 897<br>
+						 Bairro Gloria, Blumenau SC
 					</address>
 					<p>
 						<i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891 <br>
@@ -57,16 +33,10 @@
 				<div class="span6">
 					<div class="copyright">
 						<p>
-							<span>&copy; UPMarkVision - All right reserved.</span>
+							<span>&copy; Criado pela UPMarkVision.</span>
 						</p>
 						<div class="credits">
-							<!--
-								All the links in the footer should remain intact.
-								You can delete the links only if you purchased the pro version.
-								Licensing information: https://bootstrapmade.com/license/
-								Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Flattern
-							-->
-							Designed by <a href="https://bootstrapmade.com/">Rafael C. Machado</a>
+							Designed por <a href="http:\\www.upmarkvision.com.br">Rafael C. Machado</a>
 						</div>
 					</div>
 				</div>

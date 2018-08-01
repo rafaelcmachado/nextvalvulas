@@ -160,3 +160,17 @@ body {
 .corpo{
   margin: 15px;
 }
+.campo{
+  margin-left: 25px;
+}
+.bitolas-body{
+    margin-top: 5%;
+}
+.table-bitola{
+  margin: 1px;
+  width: 75%;
+  margin-left: 10%;
+}
+.title-bitola{
+  margin-left: 10%;
+}

@@ -1,6 +1,7 @@
 <?php
   require_once('functions.php');
   view($_GET['id']);
+  indexBitola($_GET['id']);
  ?>
 <?php include(ADMDASH_TEMPLATE); ?>
 
@@ -11,35 +12,98 @@
 	<div class="alert alert-<?php echo $_SESSION['type']; ?>"><?php echo $_SESSION['message']; ?></div>
 <?php endif; ?>
 
+<div class="container">
+  <div class="row">
+    <div class="cl-md-4">
+      <dl class="dl-horizontal">
+      	<dd><img src="../../img/produto/%20<?php echo $customer['caminho']; ?>" alt="Error Image"></dd>
 
-<dl class="dl-horizontal">
-	<dd><img src="../../img/produto/%20<?php echo $customer['caminho']; ?>" alt="Error Image"></dd>
+      </dl>
+    </div>
+    <div class="cl-md-8">
+      <div class="container">
+        <div class="row">
+            <div class="cl-md-4 campo">
+            	<dt>Nome:</dt>
+            	<dd><?php echo $customer['nome']; ?></dd>
+            </div>
 
-</dl>
+            <div class="cl-md-4 campo">
+            	<dt>Grupo:</dt>
+            	<dd><?php echo $customer['grupo']; ?></dd>
+            </div>
 
-<dl class="dl-horizontal">
-	<dt>Nome:</dt>
-	<dd><?php echo $customer['nome']; ?></dd>
+            <div class="cl-md-4 campo">
+            	<dt>Preço:</dt>
+            	<dd><?php echo $customer['preco']; ?></dd>
+            </div>
 
-	<dt>Preço:</dt>
-	<dd><?php echo $customer['preco']; ?></dd>
+        </div>
+        <div class="row">
+          <div class="cl-md-4 campo">
+            <dt>Data de Cadastro:</dt>
+            <dd><?php echo $customer['dataCadastro']; ?></dd>
+          </div>
 
-	<dt>Grupo:</dt>
-	<dd><?php echo $customer['grupo']; ?></dd>
-</dl>
+          <div class="cl-md-8 campo">
+            <dt>Descrição:</dt>
+            <dd><?php echo $customer['descricao']; ?></dd>
+          </div>
+        </div>
 
-<dl class="dl-horizontal">
-
-  <dt>Data de Cadastro:</dt>
-	<dd><?php echo $customer['dataCadastro']; ?></dd>
-
-
-	<dt>Descrição:</dt>
-	<dd><?php echo $customer['descricao']; ?></dd>
+      </div>
 
 
-</dl>
 
+
+    </div>
+  </div>
+</div>
+<div class="container bitolas-body">
+  <div class="row">
+    <div class="cl-md-2">
+      <h2 class="title-bitola">
+        Bitolas
+      </h2>
+    </div>
+    <div class="cl-md-2 campo">
+      <a class="btn btn-primary" href="../bitola/add.php?id=<?php echo $_GET['id']; ?>"><i class="fa fa-plus"></i> Nova Bitola</a>
+    </div>
+  </div>
+</div>
+<table class="table table-hover table-bitola">
+<thead>
+	<tr>
+		<th>ID</th>
+		<th >Código</th>
+		<th width="30%">Descrição</th>
+    <th>Referencia</th>
+		<th>Opções</th>
+	</tr>
+</thead>
+<tbody>
+  <?php if ($bitolas) : ?>
+  <?php foreach ($bitolas as $bitola) : ?>
+	<tr>
+		<td><?php echo $bitola['id']; ?></td>
+		<td><?php echo $bitola['codRef']; ?></td>
+    <td><?php echo $bitola['descricao']; ?></td>
+    <td><?php echo $bitola['ref']; ?></td>
+		<td class="actions text-right">
+			<a href="edit.php?id=<?php echo $bitola['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>
+			<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal" data-customer="<?php echo $bitola['id']; ?>">
+				<i class="fa fa-trash"></i> Excluir
+			</a>
+		</td>
+	</tr>
+<?php endforeach; ?>
+<?php else : ?>
+  <tr>
+		<td colspan="6">Nenhum registro encontrado.</td>
+	</tr>
+<?php endif; ?>
+</tbody>
+</table>
 
 <div id="actions" class="row">
 	<div class="col-md-12">
