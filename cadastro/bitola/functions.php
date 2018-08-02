@@ -25,8 +25,12 @@ function add($id = null) {
   if (!empty($_POST['customer'])) {
 
     $customer = $_POST['customer'];
+
     save('bitola', $customer);
-    header('location: ../produto/index.php?id='.$_GET['id']);
+
+		$id = $_GET['id'];
+
+    header("location: ../produto/prodview.php?id=$id");
   }
 }
 

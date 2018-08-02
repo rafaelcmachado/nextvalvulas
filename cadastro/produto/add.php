@@ -42,7 +42,7 @@
                   echo "<option value='".$linha['id']."' selected='selected'>".$linha['nome']."</option>";
                 }
                 else{
-                  echo "<option value='".$linha['id']."'>".$linha['id'] . $linha['nome']."</option>";
+                  echo "<option value='".$linha['id']."'>". $linha['nome']."</option>";
                 }
             }
             echo "</select>";

@@ -74,7 +74,6 @@
 <table class="table table-hover table-bitola">
 <thead>
 	<tr>
-		<th>ID</th>
 		<th >Código</th>
 		<th width="30%">Descrição</th>
     <th>Referencia</th>
@@ -85,12 +84,11 @@
   <?php if ($bitolas) : ?>
   <?php foreach ($bitolas as $bitola) : ?>
 	<tr>
-		<td><?php echo $bitola['id']; ?></td>
 		<td><?php echo $bitola['codRef']; ?></td>
     <td><?php echo $bitola['descricao']; ?></td>
     <td><?php echo $bitola['ref']; ?></td>
 		<td class="actions text-right">
-			<a href="edit.php?id=<?php echo $bitola['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>
+			<a href="../bitola/edit.php?id=<?php echo $bitola['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>
 			<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal" data-customer="<?php echo $bitola['id']; ?>">
 				<i class="fa fa-trash"></i> Excluir
 			</a>
