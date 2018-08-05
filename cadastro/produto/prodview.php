@@ -44,7 +44,6 @@
             <dt>Data de Cadastro:</dt>
             <dd><?php echo $customer['dataCadastro']; ?></dd>
           </div>
-
           <div class="cl-md-8 campo">
             <dt>Descrição:</dt>
             <dd><?php echo $customer['descricao']; ?></dd>
@@ -52,10 +51,6 @@
         </div>
 
       </div>
-
-
-
-
     </div>
   </div>
 </div>
@@ -88,8 +83,8 @@
     <td><?php echo $bitola['descricao']; ?></td>
     <td><?php echo $bitola['ref']; ?></td>
 		<td class="actions text-right">
-			<a href="../bitola/edit.php?id=<?php echo $bitola['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>
-			<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal" data-customer="<?php echo $bitola['id']; ?>">
+			<a href="../bitola/edit.php?id=<?php echo $bitola['id']; ?>&idProd=<?php echo $_GET['id'];?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>
+			<a href="deleteBitola.php?id=<?php echo $bitola['id']; ?>&idProd=<?php echo $_GET['id'];?>" class="btn btn-sm btn-danger">
 				<i class="fa fa-trash"></i> Excluir
 			</a>
 		</td>

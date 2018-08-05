@@ -44,7 +44,7 @@ function find( $table = null, $id = null ) {
 	    $result = $database->query($sql);
 
 	    if ($result->num_rows > 0) {
-	      $found = $result->fetch_all(MYSQLI_ASSOC);
+	      $found = $result->mysqli_fetch_all(MYSQLI_ASSOC);
 
         /* Metodo alternativo
         $found = array();
@@ -99,7 +99,30 @@ function findBitolaIndex($id = null) {
 
 	try {
 		$database = open_database();
-		$sql = "SELECT * from bitola where idProduto = " . $id;
+		$sql = "SELECT b.*, i.caminho from bitola b
+						left join imagem_bitola i on i.idBitola = b.id
+						where b.idProduto = " . $id;
+		$resultado = mysqli_query($database, $sql);
+		if (mysqli_num_rows($resultado) > 0) {
+				return $resultado;
+		} else {
+				return false;
+		}
+
+	} catch (Exception $e) {
+	  $_SESSION['message'] = $e->GetMessage();
+	  $_SESSION['type'] = 'danger';
+  }
+}
+
+function findGeralIndex($table = null) {
+
+	$database = open_database();
+	$found = null;
+
+	try {
+		$database = open_database();
+		$sql = "SELECT * from " . $table;
 		$resultado = mysqli_query($database, $sql);
 		if (mysqli_num_rows($resultado) > 0) {
 				return $resultado;
@@ -158,9 +181,32 @@ function findGrupo() {
         }
 			}
 
+	function findBitola($id = null) {
+					$database = open_database();
+	        $sql = "SELECT * FROM bitola where idProduto = " . $id . " ORDER BY nome";
+	        $resultado = mysqli_query($database, $sql);
+	        if (mysqli_num_rows($resultado) > 0) {
+	            return $resultado;
+	        } else {
+	            return false;
+	        }
+				}
+
 function findUltimoProd() {
 							$database = open_database();
 			        $sql = "SELECT id FROM produto ORDER BY id desc limit 1";
+			        $resultado = mysqli_query($database, $sql);
+			        if (mysqli_num_rows($resultado) > 0) {
+									$valor =	mysqli_fetch_array($resultado, 1);
+			            return $valor['id'];
+			        } else {
+			            return false;
+			        }
+						}
+
+function findUltimaBitola() {
+							$database = open_database();
+			        $sql = "SELECT id FROM bitola ORDER BY id desc limit 1";
 			        $resultado = mysqli_query($database, $sql);
 			        if (mysqli_num_rows($resultado) > 0) {
 									$valor =	mysqli_fetch_array($resultado, 1);
@@ -262,6 +308,38 @@ function update($table = null, $id = 0, $data = null) {
   $sql  = "UPDATE " . $table;
   $sql .= " SET $items";
   $sql .= " WHERE id=" . $id . ";";
+
+  try {
+    $database->query($sql);
+
+    $_SESSION['message'] = 'Registro atualizado com sucesso.';
+    $_SESSION['type'] = 'success';
+
+  } catch (Exception $e) {
+
+    $_SESSION['message'] = 'Nao foi possivel realizar a operacao.';
+    $_SESSION['type'] = 'danger';
+  }
+
+  close_database($database);
+}
+
+function updateImg($table = null, $id = 0, $data = null) {
+
+  $database = open_database();
+
+  $items = null;
+
+  foreach ($data as $key => $value) {
+    $items .= trim($key, "'") . "='$value',";
+  }
+
+  // remove a ultima virgula
+  $items = rtrim($items, ',');
+
+  $sql  = "UPDATE " . $table;
+  $sql .= " SET $items";
+  $sql .= " WHERE idProduto=" . $id . ";";
 
   try {
     $database->query($sql);

@@ -5,8 +5,7 @@ require_once(DBAPI);
 
 $customers = null;
 $customer  = null;
-$cidade    = null;
-$ativo	   = null;
+$imagem  = null;
 
 /**
  *  Listagem de Clientes
@@ -30,16 +29,21 @@ function add($id = null) {
 
 		$id = $_GET['id'];
 
+		$imagem['caminho'] = saveImage();
+		if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] == 0 ) {
+
+			$imagem['idBitola'] = findUltimaBitola();
+		}
+		save('imagem_bitola', $imagem);
+
     header("location: ../produto/prodview.php?id=$id");
   }
 }
 
-/**
- *	Atualizacao/Edicao de Cliente
- */
+
 function edit() {
 
-
+	$idProd = $_GET['idProd'];
 
   if (isset($_GET['id'])) {
 
@@ -50,33 +54,48 @@ function edit() {
       $customer = $_POST['customer'];
 
       update('bitola', $id, $customer);
-      header('location: index.php');
+			header("location: ../produto/prodview.php?id=$idProd");
+
     } else {
 
       global $customer;
       $customer = find('bitola', $id);
     }
   } else {
-    header('location: index.php');
+		header("location: ../produto/prodview.php?id=$idProd");
   }
 }
 
-/**
- *  Exclusão de um Cliente
- */
-function delete($id = null) {
+function saveImage() {
 
-  global $customer;
-  $customer = remove('bitola', $id);
+// verifica se foi enviado um arquivo
+if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] == 0 ) {
 
-  header('location: index.php');
-}
+    $arquivo_tmp = $_FILES[ 'arquivo' ][ 'tmp_name' ];
+    $nome = $_FILES[ 'arquivo' ][ 'name' ];
 
-function view($id = null) {
-	if (isset($_GET['id'])) {
-		global $customers;
-		$customers = findBitola($id);
-	} else {
-		header('location: ../produto/index.php');
+    // Pega a extensão
+    $extensao = pathinfo ( $nome, PATHINFO_EXTENSION );
+
+    // Converte a extensão para minúsculo
+    $extensao = strtolower ( $extensao );
+
+    // Somente imagens, .jpg;.jpeg;.gif;.png
+    // Aqui eu enfileiro as extensões permitidas e separo por ';'
+    // Isso serve apenas para eu poder pesquisar dentro desta String
+    if ( strstr ( '.jpg;.jpeg;.gif;.png', $extensao ) ) {
+        // Cria um nome único para esta imagem
+        // Evita que duplique as imagens no servidor.
+        // Evita nomes com acentos, espaços e caracteres não alfanuméricos
+        $novoNome = uniqid ( time () ) . '.' . $extensao;
+
+        // Concatena a pasta com o nome
+				$destino = '../../img/bitola/ ' . $novoNome;
+
+        // tenta mover o arquivo para o destino
+        if ( @move_uploaded_file ( $arquivo_tmp, $destino ) ) {
+            	return $novoNome;
+        }
+    }
 	}
 }

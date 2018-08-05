@@ -7,7 +7,7 @@
 
 <h2>Atualizar Bitola</h2>
 
-<form action="edit.php?id=<?php echo $customer['id']; ?>" method="post">
+<form action="edit.php?id=<?php echo $customer['id']; ?>&idProd=<?php echo $_GET['id'];?>" method="post">
   <hr />
   <div class="row">
     <div class="form-group col-md-4">

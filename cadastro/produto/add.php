@@ -34,7 +34,7 @@
         if ($grupo == false) {
             echo 'Falha no combo!';
         } else {
-            echo "<select type='text' class='form-control' name='customer['idGrupo']'>";
+            echo "<select type='text' class='form-control' name=\"customer['idGrupo']\">";
 
             for ($i = 0; $i < mysqli_num_rows($grupo); $i++) {
                 $linha = mysqli_fetch_array($grupo);
@@ -42,7 +42,7 @@
                   echo "<option value='".$linha['id']."' selected='selected'>".$linha['nome']."</option>";
                 }
                 else{
-                  echo "<option value='".$linha['id']."'>". $linha['nome']."</option>";
+                  echo "<option value='".$linha['id']."'>".$linha['nome']."</option>";
                 }
             }
             echo "</select>";

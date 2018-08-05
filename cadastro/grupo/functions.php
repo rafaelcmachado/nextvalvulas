@@ -8,18 +8,11 @@ $customer  = null;
 $cidade    = null;
 $ativo	   = null;
 
-/**
- *  Listagem de Clientes
- */
 function index() {
 	global $customers;
-	$customers = find_all('grupo_produto');
+	$customers = findGeralIndex('grupo_produto');
 }
 
-
-/**
- *  Cadastro de Clientes
- */
 function add() {
 
   if (!empty($_POST['customer'])) {
@@ -31,12 +24,7 @@ function add() {
   }
 }
 
-/**
- *	Atualizacao/Edicao de Cliente
- */
 function edit() {
-
-
 
   if (isset($_GET['id'])) {
 
@@ -58,9 +46,6 @@ function edit() {
   }
 }
 
-/**
- *  Exclusão de um Cliente
- */
 function delete($id = null) {
 
   global $customer;

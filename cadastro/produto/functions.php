@@ -75,12 +75,12 @@ function edit() {
       update('produto', $id, $customer);
 
 			$imagem['caminho'] = saveImage();
-			if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] == 0 ) {
+			if ( strlen($imagem['caminho']) > 0 ) {
 
 				$imagem['seq'] = 1;
 				$imagem['idProduto'] = $_GET['id'];
 
-				update('imagem_produto', $imagem);
+				updateImg('imagem_produto', $id, $imagem);
 			}
 
       header('location: index.php');
@@ -128,9 +128,14 @@ if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] 
 	}
 }
 
-/**
- *  Exclusão de um Produto
- */
+function deleteBitola($id = null, $idProd = null) {
+
+  global $customer;
+  $customer = remove('bitola', $id);
+
+  header("location: prodview.php?id=$idProd");
+}
+
 function delete($id = null) {
 
   global $customer;

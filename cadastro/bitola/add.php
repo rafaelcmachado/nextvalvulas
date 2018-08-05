@@ -8,7 +8,7 @@
 
 <h2>Novo Grupo Produto</h2>
 
-<form action="add.php?id=<?php echo $_GET['id']; ?>" method="post">
+<form action="add.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
   <!-- area de campos do form -->
   <hr />
   <div class="row">
@@ -30,12 +30,17 @@
       </div>
       <input hidden="true" type="text" class="form-control" name="customer['idProduto']" value="<?php echo $_GET['id']; ?>">
   </div>
+  <div class="form-group col-md-3">
+    <label for="campo2">Imagem</label>
+    <input name="arquivo" type="file" />
+  </div>
   <div id="actions" class="row">
     <div class="col-md-12">
       <button type="submit" class="btn btn-primary">Salvar</button>
       <a href="../produto/prodview.php?id=<?php echo $_GET['id']; ?>" class="btn btn-default">Cancelar</a>
     </div>
   </div>
+
 </form>
 
 <?php include(ADMDASHF_TEMPLATE); ?>

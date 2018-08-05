@@ -2778,5 +2778,11 @@ article img.pull-right, article .align-right {
   width: 400px;
   height: 400px;
 }
+.table-bitola{
+  width: 100%;
+}
+.divBitola{
+  margin-top: -7%;
+}
 
 /* Theme Styler :: End */
