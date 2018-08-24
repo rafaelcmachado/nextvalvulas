@@ -51,7 +51,7 @@
         <h4 id="mySigninModalLabel">Conectar em sua <strong>Conta!</strong></h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" method="post" action="ope.php" id="formlogin" name="formlogin">
+        <form class="form-horizontal" method="post" action="/ope.php" id="formlogin" name="formlogin">
           <div class="control-group">
             <label class="control-label" for="inputText">E-mail</label>
             <div class="controls">

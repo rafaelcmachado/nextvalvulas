@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Next Valvulas - ECommerce</title>
+  <title>Next Valvulas - E Commerce</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="" />
   <meta name="author" content="" />
@@ -27,7 +27,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo BASEURL; ?>ico/apple-touch-icon-114-precomposed.png" />
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo BASEURL; ?>ico/apple-touch-icon-72-precomposed.png" />
   <link rel="apple-touch-icon-precomposed" href="<?php echo BASEURL; ?>ico/apple-touch-icon-57-precomposed.png" />
-  <link rel="shortcut icon" href="<?php echo BASEURL; ?>ico/favicon.png" />
+  <link rel="shortcut icon" href="<?php echo BASEURL; ?>img/logo.png" />
 
   <!-- =======================================================
     Author: Rafael Carlos Machado
@@ -38,9 +38,6 @@
 <?php
   ob_start();
   session_start();
-  require_once('nextvalvulas.com.br/private/config.php');
-  require_once('nextvalvulas.com.br/private/functions.php');
-  grupoFind();
   ?>
 
 <body>
@@ -83,7 +80,8 @@
         <div class="row">
           <div class="span4">
             <div class="logo">
-              <h1>LOGO</h1>
+              <a href="/"><img src="img/logo.png" alt="" class="img-logo" /></a>
+
             </div>
           </div>
           <div class="span8">
@@ -95,18 +93,11 @@
                       <a href="<?php echo BASEURL; ?>index.php">Inicio <i class="fas fa-home"></i></a>
                     </li>
                     <li class="dropdown active">
-                      <a href="about.php">Sobre nós <i class="fas fa-bookmark"></i></a>
+                      <a href="<?php echo BASEURL; ?>about.php">Sobre nós <i class="fas fa-bookmark"></i></a>
                     </li>
                     <li class="dropdown">
                       <a href="#">Produtos <i class="icon-angle-down"></i></a>
                       <ul class="dropdown-menu">
-                        <?php if ($grupos) : ?>
-                        <?php foreach ($grupos as $grupo) : ?>
-                          <li><a href="/views/produto.php?id=<?php echo $grupo['id']; ?>"><?php echo $grupo['nome']; ?></a></li>
-                        <?php endforeach; ?>
-                        <?php else : ?>
-                          <li><a href="index.html">Sem produtos</a></li>
-                        <?php endif; ?>
                         <!--<li class="dropdown"><a href="#">Valvulas <i class="icon-angle-right"></i></a>
                           <ul class="dropdown-menu sub-menu-level1">
                             <li><a href="index.html">Esfera</a></li>
@@ -118,14 +109,16 @@
                             <li><a href="index-alt3.html">Segurança</a></li>
                             <li><a href="index-alt3.html">Vapor</a></li>
                           </ul>
-                        </li>
-                        <li><a href="views\produto.php">Filtro Y</a></li>
-                        <li><a href="table.html">Flanges</a></li>
-                        <li><a href="components.html">Reservatório Ar Comprimido</a></li>
-                        <li><a href="animations.html">Pneumatica</a></li>
-                        <li><a href="icons.html">Atuadores</a></li>
-                        <li><a href="icon-variations.html">Linha Valor</a></li>
-                        <li><a href="icon-variations.html">Diversos</a></li>-->
+                        </li>-->
+                        <li><a href="<?php echo BASEURL; ?>views\produto.php?id=13">Válvulas Borboletas</a></li>
+                        <li><a href="<?php echo BASEURL; ?>views\produto.php?id=9">Vávulas Esferas</a></li>
+                        <li><a href="<?php echo BASEURL; ?>views\produto.php?id=12">Válvulas Gaveta</a></li>
+                        <li><a href="<?php echo BASEURL; ?>views\produto.php?id=11">Válvulas Globo</a></li>
+                        <li><a href="<?php echo BASEURL; ?>views\produto.php?id=14">Válvulas Guilhotinas</a></li>
+                        <li><a href="<?php echo BASEURL; ?>views\produto.php?id=16">Válvulas Retenção</a></li>
+                        <li><a href="<?php echo BASEURL; ?>views\produto.php?id=15">Atuadores</a></li>
+                        <li><a href="<?php echo BASEURL; ?>views\produto.php?id=17">Filtro Y</a></li>
+                        <li><a href="<?php echo BASEURL; ?>views\produto.php?id=">Diversos</a></li>
 
                       </ul>
                     </li>

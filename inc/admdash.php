@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template -->
     <link href="<?php echo BASEURL; ?>css/bar.css" rel="stylesheet">
+    
 
 </head>
 

@@ -73,7 +73,7 @@ function findProdutoIndex() {
 		$sql = "SELECT
 													p.id,
 													p.nome,
-						concat(\"R$\",p.preco) as preco,
+						concat(\"R$ \",CONVERT((select sum(preco) / count(*) from bitola where idProduto = p.id), DECIMAL(10,2))) as preco,
 													g.nome as grupo,
 							DATE_FORMAT(p.dataCadastro, \"%d/%m/%Y\") as dataCadastro,
 											 IF(p.inativo = 0, \"Sim\", \"Não\") as inativo
@@ -115,6 +115,43 @@ function findBitolaIndex($id = null) {
   }
 }
 
+function findGrProduto($id = null) {
+
+	$database = open_database();
+	$found = null;
+
+	try {
+		$database = open_database();
+		$sql = "SELECT
+													p.id,
+													p.nome,
+						concat(\"R$ \",CONVERT((select sum(preco) / count(*) from bitola where idProduto = p.id), DECIMAL(10,2))) as preco,
+													g.nome as grupo,
+							DATE_FORMAT(p.dataCadastro, \"%d/%m/%Y\") as dataCadastro,
+											 IF(p.inativo = 0, \"Sim\", \"Não\") as inativo,
+												  p.descricao,
+												  p.conexao,
+												  p.norma,
+											    p.material,
+													i.caminho
+						from      produto p
+						left join grupo_produto g on g.id = p.idGrupo
+						left join imagem_produto i on i.idProduto = p.id and i.seq = 1
+						where g.id = $id";
+		$resultado = mysqli_query($database, $sql);
+		if (mysqli_num_rows($resultado) > 0) {
+				return $resultado;
+		} else {
+				return false;
+		}
+
+	} catch (Exception $e) {
+	  $_SESSION['message'] = $e->GetMessage();
+	  $_SESSION['type'] = 'danger';
+  }
+}
+
+
 function findGeralIndex($table = null) {
 
 	$database = open_database();
@@ -146,11 +183,14 @@ function findProduto( $id = null) {
 		$sql = "SELECT
 													p.id,
 													p.nome,
-						concat(\"R$ \",CONVERT(p.preco, DECIMAL(10,2))) as preco,
+						concat(\"R$ \",CONVERT((select sum(preco) / count(*) from bitola where idProduto = p.id), DECIMAL(10,2))) as preco,
 													g.nome as grupo,
 							DATE_FORMAT(p.dataCadastro, \"%d/%m/%Y\") as dataCadastro,
 											 IF(p.inativo = 0, \"Sim\", \"Não\") as inativo,
-											    p.descricao,
+												  p.descricao,
+												  p.conexao,
+												  p.norma,
+											    p.material,
 													i.caminho
 						from      produto p
 						left join grupo_produto g on g.id = p.idGrupo
@@ -324,7 +364,7 @@ function update($table = null, $id = 0, $data = null) {
   close_database($database);
 }
 
-function updateImg($table = null, $id = 0, $data = null) {
+function updateImg($table = null, $id = 0, $seq = 0, $data = null) {
 
   $database = open_database();
 
@@ -339,7 +379,8 @@ function updateImg($table = null, $id = 0, $data = null) {
 
   $sql  = "UPDATE " . $table;
   $sql .= " SET $items";
-  $sql .= " WHERE idProduto=" . $id . ";";
+	$sql .= " WHERE idProduto=" . $id;
+  $sql .= " AND seq =" . $seq . ";";
 
   try {
     $database->query($sql);

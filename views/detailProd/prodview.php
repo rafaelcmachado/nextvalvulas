@@ -40,7 +40,7 @@
                 </div>
                 <!-- start flexslider -->
                 <div class="flexslider">
-                      <img src="../../img/produto/%20<?php echo $customer['caminho']; ?>" alt="" />
+                      <img src="../../img/produto/<?php echo $customer['caminho']; ?>" alt="" />
                 </div>
                 <!-- end flexslider -->
               </div>
@@ -54,7 +54,7 @@
               <div class="widget">
                 <h5 class="widgetheading">Item</h5>
                 <ul class="folio-detail">
-                  <li><label>Preço : <?php echo $customer['preco']; ?></label></li>
+                  <li><label id="lblPreco" value="" >Preço Médio: <?php echo $customer['preco']; ?> </label></li>
                   <form action="add.php?id=<?php echo $_GET['id']; ?>" method="post">
                     <label for="name">Quantidade:</label>
                     <input type="text" class="form-control" name="customer['codRef']" value="<?php echo $customer['codRef']; ?>">
@@ -94,21 +94,34 @@
         </div>
       </div>
       <div class="container divBitola">
-          <div class="row">
+        <aside class="right-sidebar">
+            <?php if(strlen($customer['norma']) > 0) {
+              echo "<div class='span8'>";
+              echo    "<h5 class='widgetheading'>Normas e Referencias </h5> <p>".$customer['norma']."</p>";
+              echo "</div>";
+            }?>
+            <?php if(strlen($customer['conexao']) > 0) {
+              echo "<div class='span8'>";
+              echo    "<h5 class='widgetheading'>Materiais </h5> <p>".$customer['conexao']."</p>";
+              echo "</div>";
+            }?>
+            <?php if(strlen($customer['material']) > 0) {
+              echo "<div class='span8'>";
+              echo    "<h5 class='widgetheading'>Conexões </h5> <p>".$customer['material']."</p>";
+              echo "</div>";
+            }?>
+
             <div class="span8">
-            </div>
-            <div class="span4">
-              <aside class="right-sidebar">
-                <h5 class="widgetheading">Bitolas </h5> <p>(Obs: Clique em qualquer linha para mais informações)</p>
-              </aside>
+                <h5 class='widgetheading'>Bitolas - <?php echo $customer['nomeCompleto']; ?></h5> <p>(Obs: Clique em qualquer linha para mais informações)</p>
             </div>
           </div>
-        </div>
+        </aside>
+
       <div class="container">
         <div class="row">
           <div class="span6">
             <div class="flexslider">
-                  <img id="myImg"  src="../../img/bitola/%20" alt="" />
+                  <img id="myImg"  src="../../img/bitola/" alt="" />
             </div>
           </div>
             <div class="span6">
@@ -123,7 +136,7 @@
                 <tbody>
                   <?php if ($bitolas) : ?>
                   <?php foreach ($bitolas as $bitola) : ?>
-                  	<tr onclick="myFunction('<?php echo $bitola['caminho']; ?>')">
+                  	<tr onclick="myFunction('<?php echo $bitola['caminho']; ?>','<?php echo $bitola['preco']; ?>')">
                       <th scope="row"><?php echo $bitola['codRef']; ?></th>
                       <td><?php echo $bitola['descricao']; ?></td>
                       <td><?php echo $bitola['ref']; ?></td>
@@ -144,9 +157,10 @@
     </section>
 
     <script>
-      function myFunction(caminho) {
+      function myFunction(caminho,precoBit) {
           var camiBit = caminho;
-          document.getElementById("myImg").src = '../../img/bitola/%20' + camiBit ;
+          document.getElementById("myImg").src = '../../img/bitola/' + camiBit ;
+          document.getElementById("lblPreco").innerHTML = "Preço: " + precoBit;
       }
     </script>
 <?php include(FOOTER_TEMPLATE); ?>

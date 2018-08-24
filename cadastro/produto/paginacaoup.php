@@ -6,7 +6,7 @@ $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 $result_curso = "SELECT
 											p.id,
 											p.nome,
-				concat(\"R$\",p.preco) as preco,
+				concat(\"R$ \",CONVERT((select sum(preco) / count(*) from bitola where idProduto = p.id), DECIMAL(10,2))) as preco,
 											g.nome as grupo,
 					DATE_FORMAT(p.dataCadastro, \"%d/%m/%Y\") as dataCadastro,
 									 IF(p.inativo = 0, \"Sim\", \"Não\") as inativo
@@ -30,7 +30,7 @@ $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
 $result_cursos = "SELECT
 											p.id,
 											p.nome,
-				concat(\"R$\",p.preco) as preco,
+				concat(\"R$ \",CONVERT((select sum(preco) / count(*) from bitola where idProduto = p.id), DECIMAL(10,2))) as preco,
 											g.nome as grupo,
 					DATE_FORMAT(p.dataCadastro, \"%d/%m/%Y\") as dataCadastro,
 									 IF(p.inativo = 0, \"Sim\", \"Não\") as inativo

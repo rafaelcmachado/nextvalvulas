@@ -44,31 +44,13 @@ function add() {
     $customer['dataCadastro'] = $today->format("Y-m-d H:i:s");
 
     save('produto', $customer);
-		$nameImg = findUltimoProd();
-		$imagem['caminho'] = saveImage($nameImg,1);
-		if ( isset( $_FILES[ 'arquivo1' ][ 'name' ] ) && $_FILES[ 'arquivo1' ][ 'error' ] == 0 ) {
+		$imagem['caminho'] = saveImage();
+		if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] == 0 ) {
 
 			$imagem['seq'] = 1;
-			$imagem['idProduto'] = $nameImg();
-			save('imagem_produto', $imagem);
+			$imagem['idProduto'] = findUltimoProd();
 		}
-
-		$imagem['caminho'] = saveImage($nameImg,2);
-		if ( isset( $_FILES[ 'arquivo2' ][ 'name' ] ) && $_FILES[ 'arquivo2' ][ 'error' ] == 0 ) {
-
-			$imagem['seq'] = 2;
-			$imagem['idProduto'] = $nameImg;
-			save('imagem_produto', $imagem);
-		}
-
-		$imagem['caminho'] = saveImage($nameImg,3);
-		if ( isset( $_FILES[ 'arquivo3' ][ 'name' ] ) && $_FILES[ 'arquivo3' ][ 'error' ] == 0 ) {
-
-			$imagem['seq'] = 3;
-			$imagem['idProduto'] = $nameImg;
-			save('imagem_produto', $imagem);
-		}
-
+		save('imagem_produto', $imagem);
     header('location: index.php');
   }
 }
@@ -92,32 +74,13 @@ function edit() {
 
       update('produto', $id, $customer);
 
-			$nameImg = $_GET['id'];
-			$imagem['caminho'] = saveImage($nameImg,1);
+			$imagem['caminho'] = saveImage();
 			if ( strlen($imagem['caminho']) > 0 ) {
 
 				$imagem['seq'] = 1;
 				$imagem['idProduto'] = $_GET['id'];
 
-				updateImg('imagem_produto', $id, 1, $imagem);
-			}
-
-			$imagem['caminho'] = saveImage($nameImg,2);
-			if ( strlen($imagem['caminho']) > 0 ) {
-
-				$imagem['seq'] = 2;
-				$imagem['idProduto'] = $_GET['id'];
-
-				updateImg('imagem_produto', $id, 2, $imagem);
-			}
-
-			$imagem['caminho'] = saveImage($nameImg,3);
-			if ( strlen($imagem['caminho']) > 0 ) {
-
-				$imagem['seq'] = 3;
-				$imagem['idProduto'] = $_GET['id'];
-
-				updateImg('imagem_produto', $id, 3, $imagem);
+				updateImg('imagem_produto', $id, $imagem);
 			}
 
       header('location: index.php');
@@ -131,24 +94,13 @@ function edit() {
   }
 }
 
-function saveImage($nomeIMG = null, $id = null) {
+function saveImage() {
 
 // verifica se foi enviado um arquivo
+if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] == 0 ) {
 
-if ( (isset( $_FILES[ 'arquivo1' ][ 'name' ] ) && $_FILES[ 'arquivo1' ][ 'error' ] == 0)
- 	OR (isset( $_FILES[ 'arquivo2' ][ 'name' ] ) && $_FILES[ 'arquivo2' ][ 'error' ] == 0)
-	OR (isset( $_FILES[ 'arquivo3' ][ 'name' ] ) && $_FILES[ 'arquivo3' ][ 'error' ] == 0)) {
-
-		if ($id == 1) {
-			$nome = $_FILES[ 'arquivo1' ][ 'name' ];
-			$arquivo_tmp = $_FILES[ 'arquivo1' ][ 'tmp_name' ];
-		}elseif ($id == 2) {
-			$nome = $_FILES[ 'arquivo2' ][ 'name' ];
-			$arquivo_tmp = $_FILES[ 'arquivo3' ][ 'tmp_name' ];
-		}elseif ($id == 3) {
-			$nome = $_FILES[ 'arquivo3' ][ 'name' ];
-			$arquivo_tmp = $_FILES[ 'arquivo3' ][ 'tmp_name' ];
-		}
+    $arquivo_tmp = $_FILES[ 'arquivo' ][ 'tmp_name' ];
+    $nome = $_FILES[ 'arquivo' ][ 'name' ];
 
     // Pega a extensão
     $extensao = pathinfo ( $nome, PATHINFO_EXTENSION );
@@ -163,7 +115,7 @@ if ( (isset( $_FILES[ 'arquivo1' ][ 'name' ] ) && $_FILES[ 'arquivo1' ][ 'error'
         // Cria um nome único para esta imagem
         // Evita que duplique as imagens no servidor.
         // Evita nomes com acentos, espaços e caracteres não alfanuméricos
-        $novoNome = $nomeIMG . $id . '.' . $extensao;
+        $novoNome = uniqid ( time () ) . '.' . $extensao;
 
         // Concatena a pasta com o nome
 				$destino = '../../img/produto/' . $novoNome;

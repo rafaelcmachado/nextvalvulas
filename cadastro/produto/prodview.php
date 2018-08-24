@@ -16,7 +16,7 @@
   <div class="row">
     <div class="cl-md-4">
       <dl class="dl-horizontal">
-      	<dd><img src="../../img/produto/%20<?php echo $customer['caminho']; ?>" alt="Error Image"></dd>
+      	<dd><img src="../../img/produto/<?php echo $customer['caminho']; ?>" alt="Error Image"></dd>
 
       </dl>
     </div>
@@ -69,9 +69,8 @@
 <table class="table table-hover table-bitola">
 <thead>
 	<tr>
-		<th >Código</th>
-		<th width="30%">Descrição</th>
-    <th>Referencia</th>
+		<th >Dimensão</th>
+		<th width="30%">Preço</th>
 		<th>Opções</th>
 	</tr>
 </thead>
@@ -79,9 +78,8 @@
   <?php if ($bitolas) : ?>
   <?php foreach ($bitolas as $bitola) : ?>
 	<tr>
-		<td><?php echo $bitola['codRef']; ?></td>
-    <td><?php echo $bitola['descricao']; ?></td>
-    <td><?php echo $bitola['ref']; ?></td>
+		<td><?php echo $bitola['dimensao']; ?></td>
+    <td>R$ <?php echo $bitola['preco']; ?></td>
 		<td class="actions text-right">
 			<a href="../bitola/edit.php?id=<?php echo $bitola['id']; ?>&idProd=<?php echo $_GET['id'];?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>
 			<a href="deleteBitola.php?id=<?php echo $bitola['id']; ?>&idProd=<?php echo $_GET['id'];?>" class="btn btn-sm btn-danger">

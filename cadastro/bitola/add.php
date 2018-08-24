@@ -13,27 +13,17 @@
   <hr />
   <div class="row">
     <div class="form-group col-md-4">
-      <label for="name">Código:</label>
-      <input type="text" class="form-control" name="customer['codRef']" value="<?php echo $customer['codRef']; ?>">
+      <label for="name">Tamanho:</label>
+      <input type="text" class="form-control" name="customer['dimensao']" value="<?php echo $customer['dimensao']; ?>">
     </div>
     </div>
     <div class="row">
       <div class="form-group col-md-4">
-        <label for="desc">Descrição:</label>
-        <input type="text" class="form-control" name="customer['descricao']" value="<?php echo $customer['descricao']; ?>">
-      </div>
-    </div>
-    <div class="row">
-      <div class="form-group col-md-4">
-        <label for="ref">Referencia:</label>
-        <input type="text" class="form-control" name="customer['ref']" value="<?php echo $customer['ref']; ?>">
+        <label for="desc">Preço:</label>
+        <input type="number" class="form-control" name="customer['preco']" value="<?php echo $customer['preco']; ?>" step="0.01">
       </div>
       <input hidden="true" type="text" class="form-control" name="customer['idProduto']" value="<?php echo $_GET['id']; ?>">
-  </div>
-  <div class="form-group col-md-3">
-    <label for="campo2">Imagem</label>
-    <input name="arquivo" type="file" />
-  </div>
+    </div>
   <div id="actions" class="row">
     <div class="col-md-12">
       <button type="submit" class="btn btn-primary">Salvar</button>
